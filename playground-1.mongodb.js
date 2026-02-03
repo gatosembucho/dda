@@ -35,3 +35,21 @@ db.pessoas.find({name: /^j.*e$/ })
 
 use("dda")
 db.pessoas.find({$and: [{name: 'malu' }, {lastname: 'luiza'}]})
+
+use("dda")
+db.pessoas.find({salary: {$gte: 1}}, {name: 1, lastname: 1})
+
+use("dda")
+db.pessoas.updateOne(
+    {_id: ObjectId("6981f3e8cb4742545ba3c34c")},
+    {$set:{salary: 4}}
+)
+
+use("dda")
+db.pessoas.updateMany(
+    {salary: 2},
+    {$set: {salary: 3}}
+)
+
+use("dda")
+db.pessoas.deleteOne()
