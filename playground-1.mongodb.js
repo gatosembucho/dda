@@ -29,3 +29,9 @@ db.pessoas.find({name: "fer"})
 
 use("dda")
 db.pessoas.find({name: /j/})
+
+use("dda")
+db.pessoas.find({name: /^j.*e$/ })
+
+use("dda")
+db.pessoas.find({$and: [{name: 'malu' }, {lastname: 'luiza'}]})
