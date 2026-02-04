@@ -38,3 +38,22 @@ db.contatos.insertMany([
 ]
 )
 
+
+/////////////////////////////////////////
+use("contatos")
+db.contatos.find({nome: /A/})
+
+use("contatos")
+db.contatos.find({telefone: /^9/})
+
+use("contatos")
+db.contatos.find({email: /.*gmail.com$/})
+
+use("contatos")
+db.contatos.find({cidade: "São Paulo"})
+
+use("contatos")
+db.contatos.find({dataCadastro: {$gt: new Date("2023-01-01") }})
+
+
+/////////////////////////////////////////
