@@ -41,7 +41,7 @@ db.contatos.insertMany([
 
 /////////////////////////////////////////
 use("contatos")
-db.contatos.find({nome: /A/})
+db.contatos.find({nome: /^A/i})
 
 use("contatos")
 db.contatos.find({telefone: /^9/})
@@ -70,5 +70,16 @@ db.contatos.updateOne(
     {$set:{cidade:"tamandare"} }
 )
 
+use('contatos');
+db.contatos.updateMany(
+    { telefone: /^41/ },
+    { $set: { cidade: "Curitiba" } }
+);
 
 /////////////////////////////////////////
+
+use('contatos');
+db.contatos.deleteOne({ nome: "Ana Silva" });
+
+use('contatos');
+db.contatos.deleteMany({ cidade: "Curitiba" });
