@@ -57,3 +57,18 @@ db.contatos.find({dataCadastro: {$gt: new Date("2023-01-01") }})
 
 
 /////////////////////////////////////////
+
+use("contatos")
+db.contatos.updateOne(
+    {nome: "Daniel Rocha"},
+    {$set:{telefone: 22222222, email:"dani@yahoo.com"} }
+)
+
+use("contatos")
+db.contatos.updateOne(
+    {nome: "Daniel Rocha"},
+    {$set:{cidade:"tamandare"} }
+)
+
+
+/////////////////////////////////////////
