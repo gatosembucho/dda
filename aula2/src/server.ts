@@ -4,13 +4,15 @@ const port = 8080
 const app = express()
 
 app.get('/', (req, res) =>{
-    res.send({ pessoa: pessoa})
+    res.status(200).send({ response: "Api funcionando"})
 })
 
-const pessoa = {
-    name: "Malu",
-    lastname: "Luiza"
-}
+// app.get('/objeto', )
+
+// const pessoa = {
+//     name: "Malu",
+//     lastname: "Luiza"
+// }
 
 app.listen(port, () =>
 {
