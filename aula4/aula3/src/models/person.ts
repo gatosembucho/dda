@@ -10,7 +10,7 @@ name: { type: String, required: true },
 age: { type: Number, required: true },
 });
 
-const Person = mongoose.model<IPerson>('Person', personSchema);
+const Person = mongoose.model<IPerson>('Person', personSchema, 'Person');
 
 
 export default Person;

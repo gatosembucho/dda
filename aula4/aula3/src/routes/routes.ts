@@ -1,6 +1,6 @@
 import { Express} from "express";
 import express from 'express'
-import person from "./usuarios.ts"
+import person from "./person.ts"
 
 export default function (app: Express){
     app
