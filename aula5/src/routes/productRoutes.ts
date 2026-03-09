@@ -1,14 +1,14 @@
-import express, { Request, Response, Router } from 'express';
-import PersonControler from '../controllers/personControler';
-import { validateDelete, validateRegister, validateUpdate } from '../middlewares/personMiddleware';
+import express, { Router } from 'express';
+import ProductController from '../controllers/productController.ts';
+import { validateObjectId, validateRegister } from '../middlewares/productMiddleware.ts';
+
 const router: Router = express.Router();
 
 router
-    .get('/usuarios', PersonControler.getUsers)
-    .post('/usuarios', validateRegister,PersonControler.createUser)
-    .put('/:id', validateUpdate, PersonControler.updateUser)
-    .delete('/:id',validateDelete, PersonControler.DeleteUser)
-    
+    .post("/products", validateRegister, ProductController.create)
+    .get("/products", validateObjectId, ProductController.findAll)
+    .get("/products/:id", validateObjectId, ProductController.findById)
+    .put("/products/:id", validateObjectId, ProductController.update)
+    .delete("/products/:id", validateObjectId, ProductController.remove);
 
-   
 export default router;

@@ -12,7 +12,7 @@ app.get('/', (req, res) =>{
 })
 
 connectDB();
-routes(app)
+new routes(app)
 
 app.listen(port, () =>
 {

@@ -1,24 +1,26 @@
 import { Request, Response, NextFunction } from "express";
+import mongoose from "mongoose";
 
-export const validateRegister = (req: Request, res: Response, next:NextFunction) => {
-    const {name, age}  = req.body
-    if(!name || !age){
-        return res.status(400).send({response: "Dados vazios"})
+export const validateRegister = (req: Request, res: Response, next: NextFunction) => {
+    const { name, description, price, stock, category, createdAt } = req.body;
+
+    if (!name || price === undefined) {
+        return res.status(400).send({ response: "Nome e preço são campos obrigatórios." })
     }
+
+    next();
 }
 
+export const validateObjectId = (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
 
-export const validateUpdate = (req: Request, res: Response, next:NextFunction) => {
-    const {id}  = req.body
-    if(!id){
-        return res.status(400).send({response: "Usuario não encontrado"})
+    if (typeof id !== "string") {
+        return res.status(400).json({ message: "ID inválido." });
     }
-}
 
-
-export const validateDelete = (req: Request, res: Response, next:NextFunction) => {
-    const {id}  = req.body
-    if(!id){
-        return res.status(400).send({response: "Usuario não encontrado"})
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: "ID inválido." });
     }
-}
+
+    next();
+};
