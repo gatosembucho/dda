@@ -1,6 +1,9 @@
+import {BrowserRouter, Route,Routes} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
+import ProductList from './pages/ProductList'
+import MainPage from './pages/mainPage'
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -17,17 +20,14 @@ function App() {
 
   return (
     <>
-      <h1 className="font-bold">Produtos</h1>
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage></MainPage>}></Route>
+          <Route path='/Produtos' element={<ProductList></ProductList>}></Route>
+        </Routes>
+        </BrowserRouter>
       <br />
-      <ul>
-        {products.map(product => (
-          <li
-            key={product.id}
-            className="font-mono text-xl">
-              {product.name}
-          </li>
-        ))}
-      </ul>
+   
     </>
   )
 }
