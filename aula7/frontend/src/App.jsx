@@ -1,33 +1,20 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-
-import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Home from './pages/Home'
+import Cadastro from './pages/Cadastro'
 
 function App() {
-  const [products, setProducts] = useState([])
-
-  const fetchProducts = async () =>{ 
-    const response = await axios.get('http://localhost:8080/api/product/products')
-    setProducts(response.data)
-    console.log(response.data)
-  }
-  
-  useEffect(() => {
-    fetchProducts();
-  },[])
-
   return (
-    <>
-    {
-      products.map((product) => {
-        return( 
-        <div key={product._id}>
-          <span>{product.name}</span>
-          <span>{product.price}</span>
-        </div>
-      )})
-    }
-    </>
+    <BrowserRouter>
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
+        <Link to="/cadastro">Cadastro</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
