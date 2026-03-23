@@ -1,11 +1,10 @@
 
-export default App
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './Index.css';
 import axios from 'axios'; 
 
-function App() {
+function Cadastro() {
     const [products, setProducts] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
@@ -154,5 +153,4 @@ function App() {
     );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+export default Cadastro
